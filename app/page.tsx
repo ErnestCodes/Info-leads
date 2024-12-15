@@ -27,10 +27,10 @@ export default function LeadGeneration() {
   const [location, setLocation] = useState("");
   const [emailDomain, setEmailDomain] = useState("");
   const [results, setResults] = useState([]);
-  const [savedLeads, setSavedLeads] = useState([]);
+  const [savedLeads, setSavedLeads] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
     try {
@@ -49,11 +49,17 @@ export default function LeadGeneration() {
     setLoading(false);
   };
 
-  const handleSave = (lead) => {
+  const handleSave = (lead: any) => {
     setSavedLeads((prevSavedLeads) => [...prevSavedLeads, lead]);
   };
 
-  const LeadTable = ({ leads, showSaveButton = false }) => (
+  const LeadTable = ({
+    leads,
+    showSaveButton = false,
+  }: {
+    leads: any;
+    showSaveButton?: boolean;
+  }) => (
     <Table>
       <TableHeader>
         <TableRow>
@@ -65,7 +71,7 @@ export default function LeadGeneration() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {leads.map((lead, index) => (
+        {leads.map((lead: any, index: any) => (
           <TableRow key={index}>
             <TableCell>{lead.Name}</TableCell>
             <TableCell>{lead.BusinessName}</TableCell>

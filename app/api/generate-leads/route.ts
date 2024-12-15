@@ -165,7 +165,7 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Failed to generate leads. Error: " + error.message },
+      { error: "Failed to generate leads. Error: " + error?.message },
       { status: 500 }
     );
   }
